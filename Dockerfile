@@ -1,14 +1,15 @@
-#
-# Node.js w/ Bower & Gulp Dockerfile
-#
-# https://github.com/dockerfile/nodejs-bower-gulp
-#
-
 # Pull base image.
-FROM dockerfile/nodejs
+FROM node:7.5
+MAINTAINER Hiroyuki Onaka
+
+RUN apt-get -y update
 
 # Install Bower & Gulp
 RUN npm install -g bower gulp
+
+RUN apt-get -y install python-dev python-pip
+
+RUN pip install awscli
 
 # Define working directory.
 WORKDIR /data
